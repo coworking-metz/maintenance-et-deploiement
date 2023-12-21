@@ -13,7 +13,7 @@ Ce script `backup.sh` est conçu pour effectuer des sauvegardes complètes d'un 
 Pour utiliser ce script, lancez-le avec les paramètres suivants :
 
 ```
-/home/coworking/scripts/backup.sh --site_name=nom_du_site --site_path=/chemin/vers/le/site --backup_path=/chemin/vers/les/sauvegardes --data-path=/chemin/vers/les/donnees --database_name=nom_de_la_base
+/home/coworking/scripts/backup.sh --site_name=nom_du_site --site_path=/chemin/vers/le/site --backup_path=/chemin/vers/les/sauvegardes --data_path=/chemin/vers/les/donnees --database_name=nom_de_la_base
 ```
 
 ### Paramètres
@@ -32,12 +32,3 @@ Pour utiliser ce script, lancez-le avec les paramètres suivants :
 ### Rotation des sauvegardes
 - Les sauvegardes MySQL sont supprimées après 30 jours.
 - Les sauvegardes du site sont supprimées après 15 jours.
-
-### Notifications
-Le script affiche des messages de progression et confirme la fin des opérations de sauvegarde et de rotation.
-
-### Sécurité
-Assurez-vous que l'utilisateur exécutant le script a les permissions nécessaires pour accéder et modifier les fichiers et bases de données concernés. Utilisez des mécanismes de sécurité pour protéger les informations d'identification.
-
-### Support
-Pour toute question ou problème, veuillez vérifier le code source et contacter votre administrateur système.
