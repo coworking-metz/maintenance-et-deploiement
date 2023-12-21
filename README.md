@@ -1,4 +1,4 @@
-## Backups `backups.sh`
+## Backups `backup.sh`
 
 ### Description
 Ce script `backup.sh` est conçu pour effectuer des sauvegardes complètes d'un site spécifique, incluant à la fois les fichiers du site et sa base de données. Il est adapté pour un environnement WordPress mais peut être modifié pour d'autres usages.
