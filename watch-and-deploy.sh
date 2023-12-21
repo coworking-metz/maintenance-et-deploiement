@@ -57,6 +57,7 @@ run_build_command() {
         BUILD_CMD=$(cat "$FOLDER/package.json" | grep '"build":' | awk -F '"' '{print $4}')
         if [ -n "$BUILD_CMD" ]; then
             echo "Running build command: $BUILD_CMD"
+            npm --prefix "$FOLDER" ci
             npm --prefix "$FOLDER" run build
         else
             echo "No build command found in package.json."
