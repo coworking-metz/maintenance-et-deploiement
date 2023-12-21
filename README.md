@@ -8,6 +8,7 @@ Ce script `backup.sh` est conçu pour effectuer des sauvegardes complètes d'un 
 - MySQL avec accès à la base de données
 - Zip pour la compression des fichiers
 - Rclone configuré pour la synchronisation avec un stockage S3
+- Un dossier data hébergeant les assets, qui n'est pas présent dans l'arbo du site
 
 ### Utilisation
 Pour utiliser ce script, lancez-le avec les paramètres suivants :
