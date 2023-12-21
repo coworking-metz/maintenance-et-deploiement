@@ -15,6 +15,7 @@ Pour utiliser ce script, lancez-le avec les paramètres suivants :
 ```
 /home/coworking/scripts/backup.sh --site_name=nom_du_site --site_path=/chemin/vers/le/site --backup_path=/chemin/vers/les/sauvegardes --data_path=/chemin/vers/les/donnees --database_name=nom_de_la_base
 ```
+Il peut être ajouté tel quel en crontab
 
 ### Paramètres
 - `--site_name`: Nom du site pour identifier les sauvegardes.
