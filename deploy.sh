@@ -1,18 +1,49 @@
 #!/bin/bash
 
+# Initialize variable to track if force flag is set
+FORCE_UPDATE=0
+
 # Parse arguments
 for i in "$@"
 do
 case $i in
     --folder=*)
     FOLDER="${i#*=}"
-    shift
+    shift # past argument=value
+    ;;
+    --site=*)
+    SITE="${i#*=}"
+    shift # past argument=value
+    ;;
+    --force)
+    FORCE_UPDATE=1
+    shift # past argument with no value
     ;;
     *)
     # unknown option
     ;;
 esac
 done
+
+if [ -z "$FOLDER" ]; then
+    if [ -z "$SITE" ]; then
+    echo "Sitename missing."
+    exit 1
+    fi
+  FOLDER="/home/coworking/$SITE"
+fi
+
+if [ ! -d "$FOLDER" ]; then
+    echo "Folder $FOLDER does not exist."
+    exit 1
+fi
+
+if [ ! -d "$FOLDER/.git" ]; then
+    echo "Folder $FOLDER is not a GIT repo."
+    exit 1
+fi
+
+echo "Deploying $FOLDER"
 
 # Initialize a variable to track if an update occurred
 UPDATED=0
@@ -67,9 +98,14 @@ run_build_command() {
     fi
 }
 
+purge_cloudflare() {
+    wget --spider -q https://webhooks.coworking-metz.fr/cloudflare/purge
+}
+
 # Main script execution
 update_repo
-if [ $UPDATED -eq 1 ]; then
+if [ $UPDATED -eq 1 ] || [ $FORCE_UPDATE -eq 1 ]; then
     run_deploy_script
     run_build_command
+    purge_cloudflare
 fi
