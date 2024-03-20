@@ -34,3 +34,11 @@ Il peut être ajouté tel quel en crontab
 ### Rotation des sauvegardes
 - Les sauvegardes MySQL sont supprimées après 30 jours.
 - Les sauvegardes du site sont supprimées après 15 jours.
+
+### Backups SQL
+
+Créer le compte backups dans MySQL:
+```SQL
+CREATE USER 'backup'@'localhost';
+GRANT SELECT,LOCK TABLES, PROCESS, SHOW VIEW ON *.* TO 'backup'@'localhost';
+```

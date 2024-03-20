@@ -97,11 +97,11 @@ echo "Site compression to zip"
 cd $site_path
 zip -q -r --symlinks "${site_backup}/site-${timestamp}.zip" .  -x "${site_path}/.git/*"
 
-# MySQL Backup Rotation: Delete files older than 30 days
-find $mysql_backup -type f -name '*.zip' -mtime +30 -exec rm {} \;
+# MySQL Backup Rotation: Delete files older than 10 days
+find $mysql_backup -type f -name '*.zip' -mtime +10 -exec rm {} \;
 
-# WWW Backup Rotation: Delete files older than 15 days
-find $site_backup -type f -name '*.zip' -mtime +15 -exec rm {} \;
+# WWW Backup Rotation: Delete files older than 5 days
+find $site_backup -type f -name '*.zip' -mtime +5 -exec rm {} \;
 
 echo "Sync to S3"
 rclone sync -v --ignore-existing $backup_path  "s3-ovh:coworking-metz/${site_name}/site"
